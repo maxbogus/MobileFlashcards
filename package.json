@@ -11,7 +11,8 @@
     "test:watch": "node ./node_modules/jest/bin/jest.js --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": ["node_modules/(?!react-native|react-navigation)/"]
   },
   "dependencies": {
     "expo": "^31.0.2",
