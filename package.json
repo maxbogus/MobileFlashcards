@@ -12,7 +12,10 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "transformIgnorePatterns": ["node_modules/(?!react-native|react-navigation)/"]
+    "transformIgnorePatterns": ["node_modules/(?!react-native|react-navigation)/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "dependencies": {
     "expo": "^31.0.2",
