@@ -13,3 +13,9 @@ $ yarn install
 ```
 $ yarn run
 ```
+
+# Development
+Check your code with unit tests:
+```$xslt
+$ yarn test
+```
