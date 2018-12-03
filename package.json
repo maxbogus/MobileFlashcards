@@ -8,12 +8,13 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "node ./node_modules/jest/bin/jest.js",
-    "test:watch": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test:watch": "node ./node_modules/jest/bin/jest.js --watchAll",
+    "test:update": "node ./node_modules/jest/bin/jest.js -u"
   },
   "jest": {
-    "preset": "react-native",
+    "preset": "jest-expo",
     "transformIgnorePatterns": [
-      "node_modules/(?!react-native|react-navigation)/"
+      "node_modules/(?!react-native|react-navigation|@expo)/"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/"
