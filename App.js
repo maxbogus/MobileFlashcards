@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
 import {FontAwesome, Ionicons} from '@expo/vector-icons'
-import {Platform, Text, View} from 'react-native';
+import {Constants} from 'expo'
+import React, {Component} from 'react';
+import {Platform, StatusBar, View} from 'react-native';
 import {createAppContainer, createBottomTabNavigator} from 'react-navigation'
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
@@ -46,14 +47,23 @@ const Tabs = createBottomTabNavigator({
         }
     }
 });
+
 const Container = createAppContainer(Tabs);
+
+function CardsStatusBar({backgroundColor, ...props}) {
+    return (
+        <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+            <StatusBar translucent backgroundColor={backgroundColor} {...props}/>
+        </View>
+    )
+}
 
 export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
                 <View style={{flex: 1}}>
-                    <Text>Open up App.js to start working on your app!</Text>
+                    <CardsStatusBar backgroundColor={purple} barStyle='light-content'/>
                     <Container/>
                 </View>
             </Provider>
