@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 70,
-        backgroundColor: '#ffffff',
+        backgroundColor: white,
         paddingLeft: 15,
         paddingRight: 15
     },
