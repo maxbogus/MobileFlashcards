@@ -8,9 +8,14 @@ exports[`App snapshot renders the loading screen 1`] = `
     }
   }
 >
-  <Text>
-    Open up App.js to start working on your app!
-  </Text>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#292477",
+        "height": 20,
+      }
+    }
+  />
   <View
     style={
       Object {
@@ -62,6 +67,24 @@ exports[`App snapshot renders the loading screen 1`] = `
             <Text>
               List of Decks
             </Text>
+            <View>
+              <Text>
+                Deck 1
+              </Text>
+              <Text>
+                2
+                 cards
+              </Text>
+            </View>
+            <View>
+              <Text>
+                Deck 2
+              </Text>
+              <Text>
+                3
+                 cards
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -295,9 +318,14 @@ exports[`App snapshot renders the root without loading screen 1`] = `
     }
   }
 >
-  <Text>
-    Open up App.js to start working on your app!
-  </Text>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#292477",
+        "height": 20,
+      }
+    }
+  />
   <View
     style={
       Object {
@@ -349,6 +377,24 @@ exports[`App snapshot renders the root without loading screen 1`] = `
             <Text>
               List of Decks
             </Text>
+            <View>
+              <Text>
+                Deck 1
+              </Text>
+              <Text>
+                2
+                 cards
+              </Text>
+            </View>
+            <View>
+              <Text>
+                Deck 2
+              </Text>
+              <Text>
+                3
+                 cards
+              </Text>
+            </View>
           </View>
         </View>
       </View>
