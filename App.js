@@ -2,7 +2,7 @@ import {FontAwesome, Ionicons} from '@expo/vector-icons'
 import {Constants} from 'expo'
 import React, {Component} from 'react';
 import {Platform, StatusBar, View} from 'react-native';
-import {createAppContainer, createBottomTabNavigator} from 'react-navigation'
+import {createAppContainer, createBottomTabNavigator, createStackNavigator} from 'react-navigation'
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
@@ -10,6 +10,7 @@ import AddDeck from './components/AddDeck'
 import ListDecks from './components/ListDecks'
 import reducer from './reducers'
 import {purple, white} from './utils/colors'
+import DeckScreen from "./components/DeckScreen";
 
 const store = createStore(reducer);
 
@@ -48,7 +49,22 @@ const Tabs = createBottomTabNavigator({
     }
 });
 
-const Container = createAppContainer(Tabs);
+const MainNavigator = createStackNavigator({
+    Home: {
+        screen: Tabs
+    },
+    DeckScreen: {
+        screen: DeckScreen,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    }
+});
+
+const Container = createAppContainer(MainNavigator);
 
 function CardsStatusBar({backgroundColor, ...props}) {
     return (
