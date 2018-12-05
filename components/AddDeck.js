@@ -10,7 +10,7 @@ function SubmitBtn({onPress, disabled}) {
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
             onPress={onPress}
             disabled={disabled}>
-            <Text style={styles.submitBtnText}>SUBMIT</Text>
+            <Text style={styles.submitBtnText}>Create Deck</Text>
         </TouchableOpacity>
     )
 }
