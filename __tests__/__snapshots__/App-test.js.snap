@@ -62,31 +62,7 @@ exports[`App snapshot renders the loading screen 1`] = `
               "flex": 1,
             }
           }
-        >
-          <View>
-            <Text>
-              List of Decks
-            </Text>
-            <View>
-              <Text>
-                Deck 1
-              </Text>
-              <Text>
-                2
-                 cards
-              </Text>
-            </View>
-            <View>
-              <Text>
-                Deck 2
-              </Text>
-              <Text>
-                3
-                 cards
-              </Text>
-            </View>
-          </View>
-        </View>
+        />
       </View>
     </View>
     <View
@@ -372,31 +348,7 @@ exports[`App snapshot renders the root without loading screen 1`] = `
               "flex": 1,
             }
           }
-        >
-          <View>
-            <Text>
-              List of Decks
-            </Text>
-            <View>
-              <Text>
-                Deck 1
-              </Text>
-              <Text>
-                2
-                 cards
-              </Text>
-            </View>
-            <View>
-              <Text>
-                Deck 2
-              </Text>
-              <Text>
-                3
-                 cards
-              </Text>
-            </View>
-          </View>
-        </View>
+        />
       </View>
     </View>
     <View
