@@ -7,10 +7,10 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
 import AddDeck from './components/AddDeck'
+import DeckScreen from "./components/DeckScreen"
 import ListDecks from './components/ListDecks'
 import reducer from './reducers'
 import {purple, white} from './utils/colors'
-import DeckScreen from "./components/DeckScreen";
 
 const store = createStore(reducer);
 

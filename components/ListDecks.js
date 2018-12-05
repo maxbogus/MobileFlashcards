@@ -3,9 +3,9 @@ import React, {Component} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {connect} from 'react-redux'
 
-import {recieveDecks} from "../actions";
-import {fetchDecks} from "../utils/storage";
-import {purple, white} from "../utils/colors";
+import {recieveDecks} from "../actions"
+import {white} from "../utils/colors"
+import {fetchDecks} from "../utils/storage"
 
 class ListDecks extends Component {
     state = {

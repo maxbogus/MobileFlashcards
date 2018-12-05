@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native'
-import {NavigationActions} from 'react-navigation'
 
 import {purple, white} from "../utils/colors";
 
