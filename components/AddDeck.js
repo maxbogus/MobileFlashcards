@@ -23,13 +23,16 @@ export default class AddDeck extends Component {
     submitHandler = () => {
         // TODO: save to redux
         // TODO: save to Async storage
-        this.toHome()
+        // TODO: get last id
+        const id = 1;
+        this.toDeck({id})
     };
 
-    toHome = () => {
-        this.props.navigation.dispatch(NavigationActions.back({
-            key: 'AddDeck'
-        }))
+    toDeck = ({id}) => {
+        this.props.navigation.navigate(
+            'DeckScreen',
+            {deckId: id}
+        )
     };
 
     render() {
