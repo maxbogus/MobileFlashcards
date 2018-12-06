@@ -1,18 +1,8 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native'
+import {StyleSheet, Text, TextInput, View} from 'react-native'
 
 import {purple, white} from "../utils/colors";
-
-function SubmitBtn({onPress, disabled}) {
-    return (
-        <TouchableOpacity
-            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-            onPress={onPress}
-            disabled={disabled}>
-            <Text style={styles.submitBtnText}>Create Deck</Text>
-        </TouchableOpacity>
-    )
-}
+import SubmitBtn from "./SubmitBtn"
 
 export default class AddDeck extends Component {
     state = {

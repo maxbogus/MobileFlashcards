@@ -14,9 +14,12 @@ class DeckScreen extends Component {
     };
 
     render() {
+        const deck = {id: 1, name: 'Deck 1', cards: 2};
+
         return (
             <View style={styles.container}>
-                <Text>Deck screen</Text>
+                <Text>{deck.name}</Text>
+                <Text>{deck.cards} cards</Text>
             </View>
         )
     }
