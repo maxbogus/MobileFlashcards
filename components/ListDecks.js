@@ -1,6 +1,6 @@
 import {AppLoading} from "expo";
 import React, {Component} from 'react'
-import {StyleSheet, Text, View} from 'react-native'
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {connect} from 'react-redux'
 
 import {recieveDecks} from "../actions"
@@ -19,8 +19,16 @@ class ListDecks extends Component {
             .then(() => this.setState(() => ({ready: true})))
     }
 
+    selectDeck = (id) => {
+        this.props.navigation.navigate(
+            'DeckScreen',
+            {deckId: id}
+        )
+    };
+
     render() {
         const decks = [{id: 1, name: 'Deck 1', cards: 2}, {id: 2, name: 'Deck 2', cards: 3}];
+        // const decks = [];
         const {ready} = this.state;
 
         if (ready === false) {
@@ -29,17 +37,25 @@ class ListDecks extends Component {
 
         return (
             <View style={styles.container}>
-                <Text>List of Decks</Text>
-                {decks.length && (
-                    decks.map((deck) => {
+                <View style={styles.center}>
+                    <Text style={styles.row}>List of Decks</Text>
+                </View>
+                {decks.length
+                    ? (decks.map((deck) => {
                         return (
-                            <View key={deck.id} style={styles.row}>
-                                <Text>{deck.name}</Text>
-                                <Text>{deck.cards} cards</Text>
-                            </View>
+                            <TouchableOpacity key={deck.id}
+                                              style={styles.center}
+                                              onPress={() => this.selectDeck(deck.id)}>
+                                <Text style={styles.row}>{deck.name}</Text>
+                                <Text style={styles.row}>{deck.cards} cards</Text>
+                            </TouchableOpacity>
                         )
-                    })
-                )}
+                    }))
+                    : (
+                        <View style={styles.center}>
+                            <Text style={styles.row}>No decks</Text>
+                        </View>
+                    )}
             </View>
         )
     }
@@ -60,7 +76,6 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
-        flex: 1,
         alignItems: 'center',
     },
 });
