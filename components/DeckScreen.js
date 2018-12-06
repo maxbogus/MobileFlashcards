@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 import {connect} from "react-redux"
 
-import {white} from "../utils/colors";
+import {white} from "../utils/colors"
+import SubmitBtn from './SubmitBtn'
 
 class DeckScreen extends Component {
     static navigationOptions = ({navigation}) => {
@@ -13,6 +14,14 @@ class DeckScreen extends Component {
         }
     };
 
+    addCard = () => {
+        console.log('add card');
+    };
+
+    startQuiz = () => {
+        console.log('start quiz');
+    };
+
     render() {
         const deck = {id: 1, name: 'Deck 1', cards: 2};
 
@@ -20,6 +29,12 @@ class DeckScreen extends Component {
             <View style={styles.container}>
                 <Text>{deck.name}</Text>
                 <Text>{deck.cards} cards</Text>
+                <SubmitBtn onPress={() => this.addCard()}
+                           text='Add Card'
+                />
+                <SubmitBtn onPress={() => this.startQuiz()}
+                           text='Start Quiz'
+                />
             </View>
         )
     }
