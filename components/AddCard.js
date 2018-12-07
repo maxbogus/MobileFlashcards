@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
 
-class AddCard extends Component {
+export default class AddCard extends Component {
     render() {
         return (
             <View>

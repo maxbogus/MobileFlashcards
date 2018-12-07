@@ -1,14 +1,16 @@
 import {FontAwesome, Ionicons} from '@expo/vector-icons'
 import {Constants} from 'expo'
-import React, {Component} from 'react';
-import {Platform, StatusBar, View} from 'react-native';
+import React, {Component} from 'react'
+import {Platform, StatusBar, View} from 'react-native'
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from 'react-navigation'
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 
+import AddCard from './components/AddCard'
 import AddDeck from './components/AddDeck'
-import DeckScreen from "./components/DeckScreen"
+import DeckScreen from './components/DeckScreen'
 import ListDecks from './components/ListDecks'
+import Quiz from './components/Quiz'
 import reducer from './reducers'
 import {purple, white} from './utils/colors'
 
@@ -55,6 +57,24 @@ const MainNavigator = createStackNavigator({
     },
     DeckScreen: {
         screen: DeckScreen,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    },
+    Quiz: {
+        screen: Quiz,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    },
+    AddCard: {
+        screen: AddCard,
         navigationOptions: {
             headerTintColor: white,
             headerStyle: {
