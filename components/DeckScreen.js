@@ -14,14 +14,14 @@ class DeckScreen extends Component {
         }
     };
 
-    addCard = () => {
+    addCard = (id) => {
         this.props.navigation.navigate(
             'AddCard',
             {deckId: id}
         )
     };
 
-    startQuiz = () => {
+    startQuiz = (id) => {
         this.props.navigation.navigate(
             'Quiz',
             {deckId: id}
@@ -38,13 +38,13 @@ class DeckScreen extends Component {
                     <Text>{deck.cards} cards</Text>
                 </View>
                 <View style={styles.center}>
-                    <SubmitBtn onPress={() => this.addCard()}
+                    <SubmitBtn onPress={() => this.addCard(deck.id)}
                                style={styles.row}
                                text='Add Card'
                     />
                 </View>
                 <View style={styles.center}>
-                    <SubmitBtn onPress={() => this.startQuiz()}
+                    <SubmitBtn onPress={() => this.startQuiz(deck.id)}
                                style={styles.row}
                                text='Start Quiz'
                     />
