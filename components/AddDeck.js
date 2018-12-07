@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, TextInput, View} from 'react-native'
 
-import {purple, white} from "../utils/colors";
-import SubmitBtn from "./SubmitBtn"
+import SubmitBtn from './SubmitBtn'
+import {white} from '../utils/colors'
 
 export default class AddDeck extends Component {
     state = {
@@ -43,17 +43,6 @@ export default class AddDeck extends Component {
 }
 
 const styles = StyleSheet.create({
-    androidSubmitBtn: {
-        backgroundColor: purple,
-        padding: 10,
-        paddingRight: 30,
-        paddingLeft: 30,
-        height: 45,
-        borderRadius: 2,
-        alignSelf: 'flex-end',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     inputContainer: {
         borderLeftWidth: 4,
         borderRightWidth: 4,
@@ -77,22 +66,9 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: white,
     },
-    iosSubmitBtn: {
-        backgroundColor: purple,
-        padding: 10,
-        borderRadius: 7,
-        height: 45,
-        marginRight: 40,
-        marginLeft: 40,
-    },
     row: {
         flexDirection: 'row',
         flex: 1,
         alignItems: 'center',
-    },
-    submitBtnText: {
-        color: white,
-        fontSize: 22,
-        textAlign: 'center',
     },
 });

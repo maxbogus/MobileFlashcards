@@ -15,11 +15,17 @@ class DeckScreen extends Component {
     };
 
     addCard = () => {
-        console.log('add card');
+        this.props.navigation.navigate(
+            'AddCard',
+            {deckId: id}
+        )
     };
 
     startQuiz = () => {
-        console.log('start quiz');
+        this.props.navigation.navigate(
+            'Quiz',
+            {deckId: id}
+        )
     };
 
     render() {
@@ -27,25 +33,56 @@ class DeckScreen extends Component {
 
         return (
             <View style={styles.container}>
-                <Text>{deck.name}</Text>
-                <Text>{deck.cards} cards</Text>
-                <SubmitBtn onPress={() => this.addCard()}
-                           text='Add Card'
-                />
-                <SubmitBtn onPress={() => this.startQuiz()}
-                           text='Start Quiz'
-                />
+                <View style={[styles.row, styles.center]}>
+                    <Text>{deck.name}</Text>
+                    <Text>{deck.cards} cards</Text>
+                </View>
+                <View style={styles.center}>
+                    <SubmitBtn onPress={() => this.addCard()}
+                               style={styles.row}
+                               text='Add Card'
+                    />
+                </View>
+                <View style={styles.center}>
+                    <SubmitBtn onPress={() => this.startQuiz()}
+                               style={styles.row}
+                               text='Start Quiz'
+                    />
+                </View>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    inputContainer: {
+        borderLeftWidth: 4,
+        borderRightWidth: 4,
+        height: 70
+    },
+    input: {
+        height: 70,
+        backgroundColor: white,
+        paddingLeft: 15,
+        paddingRight: 15
+    },
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 30,
+        marginRight: 30,
+    },
     container: {
         flex: 1,
+        padding: 20,
         backgroundColor: white,
-        padding: 15
-    }
+    },
+    row: {
+        flexDirection: 'row',
+        flex: 1,
+        alignItems: 'center',
+    },
 });
 
 function mapDispatchToProps(dispatch, {navigation}) {
