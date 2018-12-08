@@ -1,11 +1,11 @@
-import {AppLoading} from "expo";
+import {AppLoading} from 'expo'
 import React, {Component} from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {connect} from 'react-redux'
 
 import {recieveDecks} from '../actions'
 import {white} from '../utils/colors'
-import {fetchDecks} from '../utils/storage'
+import {getDecks} from '../utils/storage'
 
 class ListDecks extends Component {
     state = {
@@ -14,7 +14,7 @@ class ListDecks extends Component {
 
     componentDidMount() {
         const {dispatch} = this.props;
-        fetchDecks()
+        getDecks()
             .then((decks) => dispatch(recieveDecks(decks)))
             .then(() => this.setState(() => ({ready: true})))
     }

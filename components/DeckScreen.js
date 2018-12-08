@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, View} from 'react-native'
-import {connect} from "react-redux"
+import {connect} from 'react-redux'
 
-import {white} from "../utils/colors"
 import SubmitBtn from './SubmitBtn'
+import {white} from '../utils/colors'
 
 class DeckScreen extends Component {
     static navigationOptions = ({navigation}) => {

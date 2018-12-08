@@ -1,7 +1,7 @@
 import React from 'react'
-import {Platform, StyleSheet, Text, TouchableOpacity} from "react-native"
+import {Platform, StyleSheet, Text, TouchableOpacity} from 'react-native'
 
-import {purple, white} from "../utils/colors";
+import {purple, white} from '../utils/colors'
 
 export default function SubmitBtn({onPress, disabled = false, text = 'Create Deck'}) {
     return (
