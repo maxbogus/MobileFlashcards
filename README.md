@@ -19,3 +19,6 @@ Check your code with unit tests:
 ```$xslt
 $ yarn test
 ```
+
+# Tested
+On both Android and iOS devices.
