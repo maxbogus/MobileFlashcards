@@ -45,6 +45,7 @@ class DeckScreen extends Component {
                 </View>
                 <View style={styles.center}>
                     <SubmitBtn onPress={() => this.startQuiz(deck.title)}
+                               disabled={deck.questions.length === 0}
                                style={styles.row}
                                text='Start Quiz'
                     />
