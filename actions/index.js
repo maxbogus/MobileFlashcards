@@ -15,3 +15,11 @@ export function addDeck(deck) {
         deck
     }
 }
+
+export function addQuestion(deck, question) {
+    return {
+        type: ADD_QUESTION,
+        deck,
+        question
+    }
+}
