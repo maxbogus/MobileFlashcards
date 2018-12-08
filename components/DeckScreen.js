@@ -29,22 +29,22 @@ class DeckScreen extends Component {
     };
 
     render() {
-        const deck = {id: 1, name: 'Deck 1', cards: 2};
+        const {deck} = this.props;
 
         return (
             <View style={styles.container}>
-                <View style={[styles.row, styles.center]}>
-                    <Text>{deck.name}</Text>
-                    <Text>{deck.cards} cards</Text>
+                <View style={styles.center}>
+                    <Text style={styles.row}>{deck.title}</Text>
+                    <Text style={styles.row}>{deck.questions.length} cards</Text>
                 </View>
                 <View style={styles.center}>
-                    <SubmitBtn onPress={() => this.addCard(deck.id)}
+                    <SubmitBtn onPress={() => this.addCard(deck.title)}
                                style={styles.row}
                                text='Add Card'
                     />
                 </View>
                 <View style={styles.center}>
-                    <SubmitBtn onPress={() => this.startQuiz(deck.id)}
+                    <SubmitBtn onPress={() => this.startQuiz(deck.title)}
                                style={styles.row}
                                text='Start Quiz'
                     />
@@ -95,7 +95,20 @@ function mapStateToProps(state, {navigation}) {
     const {deckId} = navigation.state.params;
 
     return {
-        deckId
+        deckId,
+        deck: {
+            title: 'React',
+            questions: [
+                {
+                    question: 'What is React?',
+                    answer: 'A library for managing user interfaces'
+                },
+                {
+                    question: 'Where do you make Ajax requests in React?',
+                    answer: 'The componentDidMount lifecycle event'
+                }
+            ]
+        }
     }
 }
 
