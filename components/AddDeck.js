@@ -6,15 +6,20 @@ import {white} from '../utils/colors'
 
 export default class AddDeck extends Component {
     state = {
-        text: ''
+        title: ''
     };
 
     submitHandler = () => {
         // TODO: save to redux
         // TODO: save to Async storage
         // TODO: get last id
-        const id = 1;
+        const id = this.state.title;
+        this.reset();
         this.toDeck({id})
+    };
+
+    reset = () => {
+        this.setState({title: ''});
     };
 
     toDeck = ({id}) => {
@@ -32,10 +37,10 @@ export default class AddDeck extends Component {
                 </View>
                 <View style={[styles.row, styles.inputContainer]}>
                     <TextInput style={[styles.row, styles.input]}
-                               value={this.state.text}
-                               onChangeText={(text) => this.setState({text})}/>
+                               value={this.state.title}
+                               onChangeText={(title) => this.setState({title: title})}/>
                 </View>
-                <SubmitBtn disabled={this.state.text === ''}
+                <SubmitBtn disabled={this.state.title === ''}
                            onPress={() => this.submitHandler()}/>
             </View>
         )
