@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import SubmitBtn from './SubmitBtn'
 import {purple, white} from '../utils/colors'
+import {clearLocalNotification, setLocalNotification} from '../utils/notifications'
 
 class Quiz extends Component {
     static navigationOptions = () => {
@@ -18,20 +19,25 @@ class Quiz extends Component {
         score: 0
     };
 
-    flipCard = (status) => {
-        this.setState({showAnswer: !status})
+    backToDeck = () => {
+        this.props.navigation.navigate(
+            'DeckScreen',
+            {deckId: this.props.deckId}
+        )
     };
+
+    componentDidMount() {
+        clearLocalNotification()
+            .then(setLocalNotification)
+    }
 
     countCorrectAnswer = () => {
         const currentScore = this.state.score;
         this.setState({score: currentScore + 1})
     };
 
-    backToDeck = () => {
-        this.props.navigation.navigate(
-            'DeckScreen',
-            {deckId: this.props.deckId}
-        )
+    flipCard = (status) => {
+        this.setState({showAnswer: !status})
     };
 
     restartQuiz = () => {

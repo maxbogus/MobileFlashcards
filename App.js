@@ -13,6 +13,7 @@ import ListDecks from './components/ListDecks'
 import Quiz from './components/Quiz'
 import reducer from './reducers'
 import {purple, white} from './utils/colors'
+import {setLocalNotification} from './utils/notifications'
 
 const store = createStore(reducer);
 
@@ -95,6 +96,10 @@ function CardsStatusBar({backgroundColor, ...props}) {
 }
 
 export default class App extends Component {
+    componentDidMount() {
+        setLocalNotification()
+    }
+
     render() {
         return (
             <Provider store={store}>
