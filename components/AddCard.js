@@ -54,7 +54,8 @@ export default class AddCard extends Component {
                                onChangeText={(answer) => this.setState({answer})}/>
                 </View>
                 <SubmitBtn disabled={this.state.question === '' && this.state.answer === ''}
-                           onPress={() => this.submitHandler()}/>
+                           onPress={() => this.submitHandler()}
+                           text='Submit'/>
             </View>
         )
     }
