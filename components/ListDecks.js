@@ -27,9 +27,9 @@ class ListDecks extends Component {
     };
 
     render() {
-        const decks = [{id: 1, name: 'Deck 1', cards: 2}, {id: 2, name: 'Deck 2', cards: 3}];
-        // const decks = [];
+        const {decks} = this.props;
         const {ready} = this.state;
+        const keys = Object.keys(decks);
 
         if (ready === false) {
             return <AppLoading/>
@@ -40,14 +40,15 @@ class ListDecks extends Component {
                 <View style={styles.center}>
                     <Text style={styles.row}>List of Decks</Text>
                 </View>
-                {decks.length
-                    ? (decks.map((deck) => {
+                {keys
+                    ? (keys.map((key) => {
+                        const deck = decks[key];
                         return (
-                            <TouchableOpacity key={deck.id}
+                            <TouchableOpacity key={key}
                                               style={styles.center}
-                                              onPress={() => this.selectDeck(deck.id)}>
-                                <Text style={styles.row}>{deck.name}</Text>
-                                <Text style={styles.row}>{deck.cards} cards</Text>
+                                              onPress={() => this.selectDeck(key)}>
+                                <Text style={styles.row}>{deck.title}</Text>
+                                <Text style={styles.row}>{deck.questions.length} cards</Text>
                             </TouchableOpacity>
                         )
                     }))
@@ -82,7 +83,30 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(decks) {
     return {
-        decks
+        decks: {
+            React: {
+                title: 'React',
+                questions: [
+                    {
+                        question: 'What is React?',
+                        answer: 'A library for managing user interfaces'
+                    },
+                    {
+                        question: 'Where do you make Ajax requests in React?',
+                        answer: 'The componentDidMount lifecycle event'
+                    }
+                ]
+            },
+            JavaScript: {
+                title: 'JavaScript',
+                questions: [
+                    {
+                        question: 'What is a closure?',
+                        answer: 'The combination of a function and the lexical environment within which that function was declared.'
+                    }
+                ]
+            }
+        }
     }
 }
 
