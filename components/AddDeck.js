@@ -1,19 +1,31 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, TextInput, View} from 'react-native'
+import {connect} from 'react-redux'
 
 import SubmitBtn from './SubmitBtn'
+import {addDeck} from '../actions'
 import {white} from '../utils/colors'
+import {saveDeckTitle} from '../utils/storage'
 
-export default class AddDeck extends Component {
+class AddDeck extends Component {
     state = {
         title: ''
     };
 
     submitHandler = () => {
-        // TODO: save to redux
-        // TODO: save to Async storage
-        // TODO: get last id
+        const {dispatch} = this.props;
         const id = this.state.title;
+
+        const deck = {
+            [id]: {
+                title: id,
+                questions: []
+            }
+        };
+
+        dispatch(addDeck(deck));
+        saveDeckTitle(id);
+
         this.reset();
         this.toDeck({id})
     };
@@ -77,3 +89,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
+
+export default connect()(AddDeck)

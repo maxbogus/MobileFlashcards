@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import SubmitBtn from './SubmitBtn'
 import {white} from '../utils/colors'
+import {getDeck} from '../utils/storage'
 
 class DeckScreen extends Component {
     static navigationOptions = ({navigation}) => {
@@ -12,6 +13,10 @@ class DeckScreen extends Component {
         return {
             title: `Deck ${deckId}`
         }
+    };
+
+    state = {
+        deck: null
     };
 
     addCard = (id) => {
@@ -28,8 +33,23 @@ class DeckScreen extends Component {
         )
     };
 
+    componentDidMount() {
+        const {deckId} = this.props;
+
+        getDeck(deckId).then((result) => {
+            this.setState({deck: result})
+        });
+
+    }
+
     render() {
-        const {deck} = this.props;
+        const {deck} = this.state;
+
+        if (!deck) {
+            return (
+                <Text> No data </Text>
+            )
+        }
 
         return (
             <View style={styles.container}>
@@ -92,24 +112,11 @@ function mapDispatchToProps(dispatch, {navigation}) {
     }
 }
 
-function mapStateToProps(state, {navigation}) {
+function mapStateToProps({navigation}) {
     const {deckId} = navigation.state.params;
 
     return {
-        deckId,
-        deck: {
-            title: 'React',
-            questions: [
-                {
-                    question: 'What is React?',
-                    answer: 'A library for managing user interfaces'
-                },
-                {
-                    question: 'Where do you make Ajax requests in React?',
-                    answer: 'The componentDidMount lifecycle event'
-                }
-            ]
-        }
+        deckId
     }
 }
 

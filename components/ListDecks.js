@@ -15,7 +15,9 @@ class ListDecks extends Component {
     componentDidMount() {
         const {dispatch} = this.props;
         getDecks()
-            .then((decks) => dispatch(recieveDecks(decks)))
+            .then((decks) => {
+                dispatch(recieveDecks(JSON.parse(decks)));
+            })
             .then(() => this.setState(() => ({ready: true})))
     }
 
@@ -29,7 +31,8 @@ class ListDecks extends Component {
     render() {
         const {decks} = this.props;
         const {ready} = this.state;
-        const keys = Object.keys(decks);
+
+        const keys = (decks) ? Object.keys(decks) : null;
 
         if (ready === false) {
             return <AppLoading/>
@@ -48,7 +51,8 @@ class ListDecks extends Component {
                                               style={styles.center}
                                               onPress={() => this.selectDeck(key)}>
                                 <Text style={styles.row}>{deck.title}</Text>
-                                <Text style={styles.row}>{deck.questions.length} cards</Text>
+
+                                <Text style={styles.row}>{deck.questions ? deck.questions.length : 0} cards</Text>
                             </TouchableOpacity>
                         )
                     }))
@@ -83,30 +87,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(decks) {
     return {
-        decks: {
-            React: {
-                title: 'React',
-                questions: [
-                    {
-                        question: 'What is React?',
-                        answer: 'A library for managing user interfaces'
-                    },
-                    {
-                        question: 'Where do you make Ajax requests in React?',
-                        answer: 'The componentDidMount lifecycle event'
-                    }
-                ]
-            },
-            JavaScript: {
-                title: 'JavaScript',
-                questions: [
-                    {
-                        question: 'What is a closure?',
-                        answer: 'The combination of a function and the lexical environment within which that function was declared.'
-                    }
-                ]
-            }
-        }
+        decks
     }
 }
 
