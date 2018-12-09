@@ -112,7 +112,7 @@ function mapDispatchToProps(dispatch, {navigation}) {
     }
 }
 
-function mapStateToProps({navigation}) {
+function mapStateToProps(state, {navigation}) {
     const {deckId} = navigation.state.params;
 
     return {
