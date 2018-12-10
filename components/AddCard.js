@@ -12,8 +12,6 @@ export default class AddCard extends Component {
     };
 
     static navigationOptions = ({navigation}) => {
-        const {deckId} = navigation.state.params;
-
         return {
             title: `Add Card`
         }
