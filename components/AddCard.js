@@ -30,7 +30,6 @@ class AddCard extends Component {
         };
 
         dispatch(addCard(deckId, card));
-        // TODO: save to Async storage
         addCardToDeck(deckId, card);
 
         this.toDeck({id: deckId})
