@@ -3,8 +3,11 @@ import {StyleSheet, Text, TextInput, View} from 'react-native'
 
 import SubmitBtn from './SubmitBtn'
 import {white} from '../utils/colors'
+import {addCard} from "../actions";
+import {addCardToDeck} from "../utils/storage";
+import {connect} from "react-redux";
 
-export default class AddCard extends Component {
+class AddCard extends Component {
     state = {
         question: '',
         answer: '',
@@ -18,11 +21,19 @@ export default class AddCard extends Component {
     };
 
     submitHandler = () => {
-        // TODO: save to redux
-        // TODO: save to Async storage
-        const id = 1;
+        const {question, answer} = this.state;
+        const {deckId, dispatch} = this.props;
 
-        this.toDeck({id})
+        const card = {
+            question: question,
+            answer: answer
+        };
+
+        dispatch(addCard(deckId, card));
+        // TODO: save to Async storage
+        addCardToDeck(deckId, card);
+
+        this.toDeck({id: deckId})
     };
 
     toDeck = ({id}) => {
@@ -89,3 +100,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
+
+function mapStateToProps(state, {navigation}) {
+    const {deckId} = navigation.state.params;
+
+    return {
+        deckId
+    }
+}
+
+export default connect(mapStateToProps)(AddCard)
