@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import SubmitBtn from './SubmitBtn'
 import {purple, white} from '../utils/colors'
 import {clearLocalNotification, setLocalNotification} from '../utils/notifications'
+import {getDeck} from "../utils/storage";
 
 class Quiz extends Component {
     static navigationOptions = () => {
@@ -16,7 +17,8 @@ class Quiz extends Component {
     state = {
         index: 0,
         showAnswer: false,
-        score: 0
+        score: 0,
+        deck: null
     };
 
     backToDeck = () => {
@@ -28,7 +30,10 @@ class Quiz extends Component {
 
     componentDidMount() {
         clearLocalNotification()
-            .then(setLocalNotification)
+            .then(setLocalNotification);
+        getDeck(this.props.deckId).then((result) => {
+            this.setState({deck: result})
+        });
     }
 
     countCorrectAnswer = () => {
@@ -63,8 +68,14 @@ class Quiz extends Component {
     };
 
     render() {
-        const {index, showAnswer} = this.state;
-        const {deck} = this.props;
+        const {index, showAnswer, deck} = this.state;
+
+        if (!deck) {
+            return (
+                <Text> No data </Text>
+            )
+        }
+
         const {questions} = deck;
 
         if (index === questions.length) {
@@ -153,20 +164,7 @@ function mapStateToProps(state, {navigation}) {
     const {deckId} = navigation.state.params;
 
     return {
-        deckId,
-        deck: {
-            title: 'React',
-            questions: [
-                {
-                    question: 'What is React?',
-                    answer: 'A library for managing user interfaces'
-                },
-                {
-                    question: 'Where do you make Ajax requests in React?',
-                    answer: 'The componentDidMount lifecycle event'
-                }
-            ]
-        }
+        deckId
     }
 }
 

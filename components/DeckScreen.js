@@ -39,7 +39,6 @@ class DeckScreen extends Component {
         getDeck(deckId).then((result) => {
             this.setState({deck: result})
         });
-
     }
 
     render() {
