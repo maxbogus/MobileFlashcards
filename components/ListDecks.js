@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {connect} from 'react-redux'
 
-import {recieveDecks} from '../actions'
+import {receiveDecks} from '../actions'
 import {white} from '../utils/colors'
 import {getDecks} from '../utils/storage'
 
@@ -16,7 +16,7 @@ class ListDecks extends Component {
         const {dispatch} = this.props;
         getDecks()
             .then((decks) => {
-                dispatch(recieveDecks(JSON.parse(decks)));
+                dispatch(receiveDecks(JSON.parse(decks)));
             })
             .then(() => this.setState(() => ({ready: true})))
     }
