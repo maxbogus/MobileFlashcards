@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 
 import SubmitBtn from './SubmitBtn'
 import {white} from '../utils/colors'
-import {getDeck} from '../utils/storage'
 
 class DeckScreen extends Component {
     static navigationOptions = ({navigation}) => {
@@ -13,10 +12,6 @@ class DeckScreen extends Component {
         return {
             title: `Deck ${deckId}`
         }
-    };
-
-    state = {
-        deck: null
     };
 
     addCard = (id) => {
@@ -33,16 +28,8 @@ class DeckScreen extends Component {
         )
     };
 
-    componentDidMount() {
-        const {deckId} = this.props;
-
-        getDeck(deckId).then((result) => {
-            this.setState({deck: result})
-        });
-    }
-
     render() {
-        const {deck} = this.state;
+        const {deck} = this.props;
 
         if (!deck) {
             return (
@@ -115,8 +102,9 @@ function mapStateToProps(state, {navigation}) {
     const {deckId} = navigation.state.params;
 
     return {
-        deckId
+        deckId,
+        deck: state[deckId]
     }
 }
 
-export default connect(mapDispatchToProps, mapStateToProps)(DeckScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(DeckScreen)
