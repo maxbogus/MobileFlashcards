@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import SubmitBtn from './SubmitBtn'
 import {purple, white} from '../utils/colors'
 import {clearLocalNotification, setLocalNotification} from '../utils/notifications'
-import {getDeck} from "../utils/storage";
 
 class Quiz extends Component {
     static navigationOptions = () => {
@@ -17,8 +16,7 @@ class Quiz extends Component {
     state = {
         index: 0,
         showAnswer: false,
-        score: 0,
-        deck: null
+        score: 0
     };
 
     backToDeck = () => {
@@ -31,9 +29,6 @@ class Quiz extends Component {
     componentDidMount() {
         clearLocalNotification()
             .then(setLocalNotification);
-        getDeck(this.props.deckId).then((result) => {
-            this.setState({deck: result})
-        });
     }
 
     countCorrectAnswer = () => {
@@ -68,13 +63,8 @@ class Quiz extends Component {
     };
 
     render() {
-        const {index, showAnswer, deck} = this.state;
-
-        if (!deck) {
-            return (
-                <Text> No data </Text>
-            )
-        }
+        const {index, showAnswer} = this.state;
+        const {deck} = this.props;
 
         const {questions} = deck;
 
@@ -164,8 +154,9 @@ function mapStateToProps(state, {navigation}) {
     const {deckId} = navigation.state.params;
 
     return {
-        deckId
+        deckId,
+        deck: state[deckId]
     }
 }
 
-export default connect(mapDispatchToProps, mapStateToProps)(Quiz)
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz)
