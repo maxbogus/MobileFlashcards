@@ -22,3 +22,7 @@ $ yarn test
 
 # Tested
 On both Android and iOS devices.
+
+* Install Client on Android/iOS [expo](https://expo.io/).
+* Run app
+* Start Expo in same WiFi network.
