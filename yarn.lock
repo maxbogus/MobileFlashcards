@@ -628,6 +628,13 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@expo/vector-icons@^11.0.0":
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-11.0.0.tgz#fa88ae8f87510d0395411b1ca2b1c266623c4d7f"
+  integrity sha512-xFaTHs5jgkil3VWVvAPHZAlvCZMAY/4n2qvko5rl494ntfZCiKugCYxjPN+SQmBCjAVwvgH43cSDOzTk+Xy1ug==
+  dependencies:
+    lodash "^4.17.4"
+
 "@expo/vector-icons@^8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-8.0.0.tgz#29c91778aee02b92b045914bbed8eec299a84e5e"
